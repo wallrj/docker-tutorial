@@ -1,0 +1,19 @@
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+$bootstrap = <<SCRIPT
+set -e
+
+# Install Docker
+# See https://docs.docker.com/installation/ubuntulinux/
+curl -sSL https://get.docker.com/ubuntu/ | sh
+
+# Add vagrant user to the docker group
+usermod -a -G docker vagrant
+
+SCRIPT
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "phusion/ubuntu-14.04-amd64"
+  config.vm.provision :shell, :inline => $bootstrap, :privileged => true
+end

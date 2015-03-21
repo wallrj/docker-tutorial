@@ -1,0 +1,216 @@
+#+TITLE: Docker...
+#+DATE: 24 March 2015
+#+AUTHOR: ...an introduction to.
+#+EMAIL: Richard Wall (@wallrj) <richard@the-moon.net>
+#+REVEAL_THEME: night
+#+REVEAL_TRANS: linear
+#+REVEAL-SLIDE-NUMBER: t
+#+REVEAL_ROOT: //cdn.jsdelivr.net/reveal.js/2.5.0/
+#+OPTIONS: timestamp:nil author:nil num:nil toc:nil reveal_rolling_links:nil
+#+OPTIONS: reveal_history:t
+# Remove speaker notes
+# awk 'BEGIN {skip=0} /^#\+BEGIN_NOTES/ { skip=1 } /^#\+END_NOTES/ {skip=0; next;} {if(skip==0) print $0}'
+
+* Preview
+  * Recap
+  * What is Docker?
+  * Try it
+  * Install it
+  * Challenge
+  * Demo
+  * Questions?
+
+* Recap
+  * Virtual Machines
+    * https://en.wikipedia.org/wiki/Virtual_machine
+  * VirtualBox / VMWare
+  * System Virtual Machines (Hardware virtualisation)
+    * Emulate foreign hardware environments
+  * Server provisioning
+    * https://en.wikipedia.org/wiki/Provisioning#Server_provisioning
+    * OS installation
+    * Storage set up
+    * Network set up
+    * Install packages
+    * Upgrade packages
+
+  * Configuration management
+    * Configuration management can be used to maintain OS configuration files.[11] Example systems include Quattor, CFEngine, Bcfg2, Puppet, and Chef.
+    * https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management
+
+  * Puppet
+    * Puppet is a tool designed to manage the configuration of Unix-like and Microsoft Windows systems declaratively. The user describes system resources and their state, either using Puppet's declarative language or a Ruby DSL (domain-specific language). This information is stored in files called "Puppet manifests". Puppet discovers the system information via a utility called Facter, and compiles the Puppet manifests into a system-specific catalog containing resources and resource dependency, which are applied against the target systems. Any actions taken by Puppet are then reported.
+    * https://en.wikipedia.org/wiki/Puppet_%28software%29
+
+  * Chef / Ansible / Salt / Fabric etc
+
+  * Vagrant
+
+    Vagrant allows you to "Create and configure lightweight, reproducible, and portable development environments."
+
+    https://www.vagrantup.com/
+
+  * `vagrant init`
+
+  * `vagrant up`
+
+  * `vagrant provision`
+
+    "Provisioners in Vagrant allow you to automatically install software, alter configurations, and more on the machine as part of the vagrant up process."
+
+    http://docs.vagrantup.com/v2/provisioning/
+
+  * `vagrant status`
+
+  * `vagant ssh`
+
+  * `vagrant halt`
+
+  * `vagrant package`
+
+  * Vagrant Cloud
+
+
+
+* What is Docker?
+
+# Docker is an open platform for developers and sysadmins to build, ship, and
+# run distributed applications. Consisting of Docker Engine, a portable,
+# lightweight runtime and packaging tool, and Docker Hub, a cloud service for
+# sharing applications and automating workflows, Docker enables apps to be
+# quickly assembled from components and eliminates the friction between
+# development, QA, and production environments. As a result, IT can ship faster
+# and run the same app, unchanged, on laptops, data center VMs, and any cloud.
+
+
+* Operating-system-level virtualization
+  * usually imposes little to no overhead, because
+  * programs in virtual partitions use the operating system's normal system call interface and
+  * do not need to be subjected to emulation or
+  * be run in an intermediate virtual machine,
+  * as is the case with whole-system virtualizers (such as VMware ESXi, QEMU or Hyper-V) and paravirtualizers (such as Xen or UML).
+  * This form of virtualization also does not require support in hardware to perform efficiently.
+
+  https://en.wikipedia.org/wiki/Operating-system-level_virtualization
+
+* Linux Building Blocks
+  * Control groups
+    * cgroups (abbreviated from control groups) is a Linux kernel feature that limits, accounts for and isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a collection of processes.
+    * This work was started by engineers at Google (primarily Paul Menage and Rohit Seth) in 2006 under the name "process containers".[1] In late 2007
+    * https://en.wikipedia.org/wiki/Cgroups
+
+  * LXC
+    * LXC containers are often considered as something in the middle between a chroot and a full fledged virtual machine. The goal of LXC is to create an environment as close as possible to a standard Linux installation but without the need for a separate kernel.
+    * Current LXC uses the following kernel features to contain processes:
+      * Kernel namespaces (ipc, uts, mount, pid, network and user)
+      * Apparmor and SELinux profiles
+      * Seccomp policies
+      * Chroots (using pivot_root)
+      * Kernel capabilities
+      * CGroups (control groups)
+
+    * https://linuxcontainers.org/lxc/introduction/
+
+  * Chroot
+    * Demo of a chrooted debootstrap bash shell
+    * Maybe demo systemd-nspawn
+
+* Other examples
+  * FreeBSD Jails
+
+    """
+    Jails improve on the concept of the traditional chroot environment in
+    several ways. In a traditional chroot environment, processes are only
+    limited in the part of the file system they can access. The rest of the
+    system resources, system users, running processes, and the networking
+    subsystem are shared by the chrooted processes and the processes of the
+    host system. Jails expand this model by virtualizing access to the file
+    system, the set of users, and the networking subsystem. More fine-grained
+    controls are available for tuning the access of a jailed environment. Jails
+    can be considered as a type of operating system-level virtualization.
+    """
+    https://www.freebsd.org/doc/handbook/jails.html
+
+  * Systemd-nspawn
+    """
+    However, to make things easy we'll focus on systemd-nspawn, the
+    mini-container manager that is shipped with systemd itself. systemd-nspawn
+    uses the same kernel interfaces as the other container managers, however is
+    less flexible as it is designed to be a container manager that is as simple
+    to use as possible and "just works", rather than trying to be a generic
+    tool you can configure in every low-level detail. We use systemd-nspawn
+    extensively when developing systemd.
+    """
+    http://0pointer.net/blog/systemd-for-administrators-part-xxi.html
+
+* Docker Components
+  * Docker daemon
+  * Docker client
+  * Docker hub
+
+* Docker Terminology
+  * Images
+  * Layers
+  * Pull
+  * Link
+
+* Docker Tutorial
+  * https://www.docker.com/tryit/
+    * Demonstrates contrived examples
+    * Who ever uses `docker commit`?
+    *
+  * `docker version`
+  * `docker search`
+  * `docker pull`
+  * `docker run`
+    * interactive / tty mode not supported (it seems)
+    * Not well explained that you supply a command to run inside.
+    * Not well explained how / where the changes are stored.
+  * `docker ps`
+    * Doesn't show cute container names...we'll see that later when we install Docker properly.
+  * `docker commit`
+  * `docker run learn/ping`
+    * Doesn't support ctrl-c
+  * `docker inspect`
+  * `docker push`
+
+* Install Docker
+
+* Docker Development Environment
+  *
+
+* MacOSX installation
+
+  * https://docs.docker.com/installation/mac/
+  * Because the Docker daemon uses Linux-specific kernel features, you can't run Docker natively in OS X. Instead, you must install the Boot2Docker application. Boot2Docker includes a VirtualBox VM, Docker itself, and the Boot2Docker management tool.
+  * Your Mac must be running OS X 10.6 "Snow Leopard" or newer to run Boot2Docker
+
+* Windows installation
+
+* Fedora Installation
+  * Join the docker group
+
+* Ubuntu Installation
+  *
+
+* Hello World
+  * `docker run hello-world`
+  *
+
+
+* Register at Docker Hub
+  * Sign up with GitHub
+
+* Challenge
+
+* Summary
+
+* Questions?
+
+* Thanks
+  * Mix Radio: https://github.com/mixradio
+  * Katja Durrani: https://github.com/katjad
+  * Carl Hughes: https://github.com/codekipple
+  * Kai Davenport: https://github.com/binocarlos
+  * Richard Wall: https://github.com/wallrj
+  * ClusterHQ: https://github.com/ClusterHQ
