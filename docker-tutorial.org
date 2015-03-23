@@ -11,6 +11,35 @@
 # Remove speaker notes
 # awk 'BEGIN {skip=0} /^#\+BEGIN_NOTES/ { skip=1 } /^#\+END_NOTES/ {skip=0; next;} {if(skip==0) print $0}'
 
+* Pre-requisites
+
+Hello,
+
+Here's a (late) announcement about tomorrow's Docker workshop this.
+Sorry for not sending this out sooner :-(
+
+It would be really helpful if you could install some or all of the following software on your laptop before the Docker workshop.
+Don't worry if you can't, we'll be able to help you get set up when you arrive.
+
+But the more you can get installed before hand, the further we'll be able to get in the limited time tomorrow evening.
+
+ * Bring your laptop!
+
+And if possible, pre-install:
+ * VirtualBox: https://www.virtualbox.org
+ * Vagrant: https://docs.vagrantup.com/v2/installation
+ * Git: http://git-scm.com/downloads
+
+For bonus points, pre-install Docker
+ (but we'll cover that during the workshop and provide an Ubuntu Linux virtual machine with Docker pre-installed)
+  * Docker: https://docs.docker.com/installation/#installation
+
+Looking forward to meeting you all tomorrow.
+
+-RichardW.
+
+PS There are a limited number of places at the venue, so if any of you have RSVPd to the Meetup but are not able to attend, please go to the Meetup page and change your status so that others can take your place and so that we can estimate how much food and drink to order.
+
 * Preview
   * Recap
   * What is Docker?
