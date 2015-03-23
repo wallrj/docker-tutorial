@@ -39,6 +39,41 @@ Looking forward to meeting you all tomorrow.
 -RichardW.
 
 PS There are a limited number of places at the venue, so if any of you have RSVPd to the Meetup but are not able to attend, please go to the Meetup page and change your status so that others can take your place and so that we can estimate how much food and drink to order.
+ * http://www.meetup.com/CodeHub-Bristol/events/219720033/
+
+Hello again,
+
+I've uploaded a tutorial box to Vagrantcloud.
+So if you want to be super prepared and if you've managed to install Git and Vagrant on your laptop (see messages below),
+please clone https://github.com/wallrj/docker-tutorial
+
+```
+git clone git@github.com:wallrj/docker-tutorial.git
+```
+
+Then change to the `docker-tutorial` directory
+and install the tutorial environment, by running the following command:
+
+```
+vagrant up
+```
+
+Vagrant will download the virtual machine and start it up for you.
+
+If all goes well you should now be able to run docker commands on the virtual machine:
+
+```
+vagrant ssh -- docker run hello-world
+```
+
+And see output like this:
+
+```
+Hello from Docker.
+This message shows that your installation appears to be working correctly.
+...
+```
+
 
 * Preview
   * Recap
