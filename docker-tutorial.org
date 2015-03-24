@@ -190,27 +190,6 @@
   # Explain /vagrant shared directory between laptop and virtual machine
   # Explain Dockerfile
 
-* Install Docker
-
-* MacOSX installation
-
-  * https://docs.docker.com/installation/mac/
-  * Because the Docker daemon uses Linux-specific kernel features, you can't run Docker natively in OS X. Instead, you must install the Boot2Docker application. Boot2Docker includes a VirtualBox VM, Docker itself, and the Boot2Docker management tool.
-  * Your Mac must be running OS X 10.6 "Snow Leopard" or newer to run Boot2Docker
-
-* Windows installation
-
-* Fedora Installation
-  * Join the docker group
-
-* Ubuntu Installation
-  *
-
-* Hello World
-  * `docker run hello-world`
-  *
-
-
 * Register at Docker Hub
   * Sign up with GitHub
 
@@ -218,7 +197,6 @@
 
   * Use `compose` to bring up a microservice application.
   * Dockerize a clojure application (Tom Coupland)
-  *
 
 * Summary
 
