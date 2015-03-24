@@ -11,17 +11,17 @@
 # Remove speaker notes
 # awk 'BEGIN {skip=0} /^#\+BEGIN_NOTES/ { skip=1 } /^#\+END_NOTES/ {skip=0; next;} {if(skip==0) print $0}'
 
-* Preview (1m)
+* Introduction and recap (5m)
 
-  * Recap
-  * Install tutorial environment
-  * What is Docker?
-  * Try it
-  * A simple web server
-  * Next steps
-  * Questions?
-
-* Recap (5m)
+  * Introduction and recap (5m)
+  * Preparations (30m)
+  * What is Docker? (5m)
+  * Summary of Docker commands so far... (5m)
+  * Tutorial Environment (5m)
+  * Exercises (30m)
+  * The `tutum/apache-php` Dockerfile (5m)
+  * Next Steps (30m)
+  * Questions? (5m)
 
 * Virtual Machines
 
@@ -258,28 +258,50 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 
   https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/
 
-* Next Steps
+* Next Steps (30m)
+
+* Build an image
+
+  * On your laptop:
+
+  #+BEGIN_SRC sh
+  cd docker-tutorial
+  cd sample2
+  edit Dockerfile
+  #+END_SRC
+
+  * And in the virtual machine:
+
+  #+BEGIN_SRC sh
+  cd /vagrant
+  cd sample2
+  docker build --tag=docker-tutorial/sample2 .
+  docker run --rm --interactive --tty docker-tutorial/sample2 /bin/bash
+  #+END_SRC
+
+  * Edit Dockerfile and repeat
 
 * Install Docker on your laptop
 
   https://docs.docker.com/installation/#installation
 
-* Register at Docker Hub
+* Register at Docker Hub and push an image
 
   * Sign up with GitHub
 
   https://hub.docker.com/
 
-* Challenges
+* Use `compose` (fig) to bring up a micro-service application.
 
-  * Use `compose` (fig) to bring up a microservice application.
-  * Dockerize a clojure application.
+  eg Elastic Search, Logstash, Kibana
+
+  https://github.com/ClusterHQ/docker-images
 
 * Summary
 
-* Questions?
+* Questions? (5m)
 
-* Thanks
+* Thanks and links
   * Mix Radio: https://github.com/mixradio
   * Katja Durrani: https://github.com/katjad
   * Carl Hughes: https://github.com/codekipple

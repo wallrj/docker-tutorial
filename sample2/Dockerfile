@@ -3,4 +3,5 @@ FROM ubuntu:14.04
 # https://docs.docker.com/reference/builder/
 #
 # `docker build --tag=docker-tutorial/sample2 .` to build an image,
-# `docker run --rm --interactive --tty docker-tutorial/sample2 /bin/sh` to run the image interactively.
+# `docker images` to view the image information, and
+# `docker run --rm --interactive --tty docker-tutorial/sample2 /bin/bash` to run the image interactively.
