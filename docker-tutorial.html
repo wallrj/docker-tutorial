@@ -433,7 +433,7 @@ apache: command not found
 <h2>Start a webserver</h2>
 <div class="org-src-container">
 
-<pre class="src src-sh"><code>docker run --rm --detach --publish 80 tutum/apache-php
+<pre class="src src-sh"><code>docker run --detach --publish 80 tutum/apache-php
 docker ps
 </code></pre>
 </div>
@@ -467,7 +467,7 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 <h2>Choose the webserver port</h2>
 <div class="org-src-container">
 
-<pre class="src src-sh"><code>docker run --rm --detach --publish 8080:80 tutum/apache-php
+<pre class="src src-sh"><code>docker run --detach --publish 8080:80 tutum/apache-php
 docker ps
 </code></pre>
 </div>
@@ -483,7 +483,7 @@ docker ps
 <h2>Serve a custom page</h2>
 <div class="org-src-container">
 
-<pre class="src src-sh"><code>docker run --rm --detach --publish 8081:80  --volume /vagrant/sample1:/app tutum/apache-php
+<pre class="src src-sh"><code>docker run --detach --publish 8081:80  --volume /vagrant/sample1:/app tutum/apache-php
 docker ps
 </code></pre>
 </div>
