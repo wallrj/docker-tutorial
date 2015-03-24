@@ -212,10 +212,63 @@ vagrant up
 
   * `docker push`
 
-* Install Docker
 
 * Docker Development Environment
-  *
+
+* Log in
+
+  * vagrant up
+  * vagrant ssh
+
+* Demonstrate barebones system
+
+  * Neither Apache or PHP present on tutorial VM!
+
+```
+vagrant@docker-tutorial:~$ php
+The program 'php' is currently not installed. You can install it by typing:
+sudo apt-get install php5-cli
+```
+
+```
+vagrant@docker-tutorial:~$ apache
+No command 'apache' found, did you mean:
+ Command 'apache2' from package 'apache2-bin' (main)
+apache: command not found
+```
+
+* Start a webserver
+  * docker run -d -p 80 tutum/apache-php
+  * docker ps
+
+    (note the port)
+
+* Access webserver from laptop
+
+  * http://172.16.255.250:<PORT>
+
+* Fix the port
+
+  * docker run -d -p 8080:80 tutum/apache-php
+  * docker ps
+
+    (note the port)
+
+* Access webserver from laptop
+
+  * http://172.16.255.250:8080
+
+
+* Serve a custom page
+  * Container configured to serve files in /app
+  * https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/
+  * Start a container with a volume
+  * docker run -d -p 8082:80 -v /vagrant/sample1:/app  tutum/apache-php
+
+  # Explain /vagrant shared directory between laptop and virtual machine
+  # Explain Dockerfile
+
+* Install Docker
 
 * MacOSX installation
 
