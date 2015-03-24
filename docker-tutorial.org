@@ -190,13 +190,19 @@
   # Explain /vagrant shared directory between laptop and virtual machine
   # Explain Dockerfile
 
+* Next Steps
+
+* Install Docker on your laptop
+  https://docs.docker.com/installation/#installation
+
 * Register at Docker Hub
+  https://hub.docker.com/
+
   * Sign up with GitHub
 
-* Challenge
-
+* Challenges
   * Use `compose` to bring up a microservice application.
-  * Dockerize a clojure application (Tom Coupland)
+  * Dockerize a clojure application.
 
 * Summary
 
