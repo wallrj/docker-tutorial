@@ -15,6 +15,6 @@ SCRIPT
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "wallrj/docker-tutorial-environment"
   config.vm.network :private_network, :ip => "172.16.255.250"
-  config.vm.hostname = "docker-tutorial"
+  config.vm.hostname = "docker-tutorial-environment"
   config.vm.provision :shell, :inline => $bootstrap, :privileged => true
 end
