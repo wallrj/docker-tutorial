@@ -114,61 +114,54 @@
   * Docker client
   * Docker hub
 
-* Docker Tutorial
+* Docker Tutorial (30 minutes)
   * https://www.docker.com/tryit/
 
-    * Demonstrates contrived examples
-    * Who ever uses `docker commit`?
+* Summary of commands so far
 
-  * `docker version`
+* `docker version`
 
-  * `docker search`
+* `docker search`
 
-  * `docker pull`
+* `docker pull`
 
-  * `docker run`
-    * interactive / tty mode not supported (it seems)
-    * Not well explained that you supply a command to run inside.
-    * Not well explained how / where the changes are stored.
+* `docker run`
 
-  * `docker ps`
-    * Doesn't show cute container names...we'll see that later when we install Docker properly.
+* `docker ps`
 
-  * `docker commit`
+* `docker commit`
 
-  * `docker run learn/ping`
-    * Doesn't support ctrl-c
+* `docker run learn/ping`
 
-  * `docker inspect`
+* `docker inspect`
 
-  * `docker push`
-
+* `docker push`
 
 * Docker Development Environment
 
 * Log in
 
-  * vagrant up
-  * vagrant ssh
+  * vagrant up (may already be complete)
+  * vagrant ssh (does this work on windows?)
 
 * Demonstrate barebones system
 
-  * Neither Apache or PHP present on tutorial VM!
+  Neither Apache or PHP present on tutorial VM!
 
-```
-vagrant@docker-tutorial:~$ php
-The program 'php' is currently not installed. You can install it by typing:
-sudo apt-get install php5-cli
-```
+  ```
+  vagrant@docker-tutorial:~$ php
+  The program 'php' is currently not installed. You can install it by typing:
+  sudo apt-get install php5-cli
+  ```
 
-```
-vagrant@docker-tutorial:~$ apache
-No command 'apache' found, did you mean:
- Command 'apache2' from package 'apache2-bin' (main)
-apache: command not found
-```
+  ```
+  vagrant@docker-tutorial:~$ apache
+  No command 'apache' found, did you mean:
+   Command 'apache2' from package 'apache2-bin' (main)
+  apache: command not found
+  ```
 
-* Start a webserver
+* Start a webserver in a Docker container
   * docker run -d -p 80 tutum/apache-php
   * docker ps
 
@@ -178,23 +171,21 @@ apache: command not found
 
   * http://172.16.255.250:<PORT>
 
-* Fix the port
+* Start a container with a fixed port
 
   * docker run -d -p 8080:80 tutum/apache-php
   * docker ps
-
-    (note the port)
 
 * Access webserver from laptop
 
   * http://172.16.255.250:8080
 
-
 * Serve a custom page
+  * docker run -d -p 8082:80 -v /vagrant/sample1:/app  tutum/apache-php
+
+* Explanation
   * Container configured to serve files in /app
   * https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/
-  * Start a container with a volume
-  * docker run -d -p 8082:80 -v /vagrant/sample1:/app  tutum/apache-php
 
   # Explain /vagrant shared directory between laptop and virtual machine
   # Explain Dockerfile
