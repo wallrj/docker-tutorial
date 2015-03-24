@@ -76,18 +76,19 @@
 
 * What is Docker?
 
-# Docker is an open platform for developers and sysadmins to build, ship, and
-# run distributed applications. Consisting of Docker Engine, a portable,
-# lightweight runtime and packaging tool, and Docker Hub, a cloud service for
-# sharing applications and automating workflows, Docker enables apps to be
-# quickly assembled from components and eliminates the friction between
-# development, QA, and production environments. As a result, IT can ship faster
-# and run the same app, unchanged, on laptops, data center VMs, and any cloud.
+  Docker is an open platform for developers and sysadmins to build, ship, and
+  run distributed applications. Consisting of Docker Engine, a portable,
+  lightweight runtime and packaging tool, and Docker Hub, a cloud service for
+  sharing applications and automating workflows, Docker enables apps to be
+  quickly assembled from components and eliminates the friction between
+  development, QA, and production environments. As a result, IT can ship faster
+  and run the same app, unchanged, on laptops, data center VMs, and any cloud.
 
+  * https://www.docker.com/whatisdocker/
 
 * Operating-system-level virtualization
-  * Share the same kernel as the host.
-  * usually imposes little to no overhead, because
+  * Containers share the same kernel as the host.
+  * Low overhead, because
   * programs in virtual partitions use the operating system's normal system call interface and
   * do not need to be subjected to emulation or
   * be run in an intermediate virtual machine,
@@ -95,56 +96,6 @@
   * This form of virtualization also does not require support in hardware to perform efficiently.
 
   https://en.wikipedia.org/wiki/Operating-system-level_virtualization
-
-* Linux Building Blocks
-  * Control groups
-    * cgroups (abbreviated from control groups) is a Linux kernel feature that limits, accounts for and isolates the resource usage (CPU, memory, disk I/O, network, etc.) of a collection of processes.
-    * This work was started by engineers at Google (primarily Paul Menage and Rohit Seth) in 2006 under the name "process containers".[1] In late 2007
-    * https://en.wikipedia.org/wiki/Cgroups
-
-  * LXC
-    * LXC containers are often considered as something in the middle between a chroot and a full fledged virtual machine. The goal of LXC is to create an environment as close as possible to a standard Linux installation but without the need for a separate kernel.
-    * Current LXC uses the following kernel features to contain processes:
-      * Kernel namespaces (ipc, uts, mount, pid, network and user)
-      * Apparmor and SELinux profiles
-      * Seccomp policies
-      * Chroots (using pivot_root)
-      * Kernel capabilities
-      * CGroups (control groups)
-
-    * https://linuxcontainers.org/lxc/introduction/
-
-  * Chroot
-    * Demo of a chrooted debootstrap bash shell
-    * Maybe demo systemd-nspawn
-
-* Other examples
-  * FreeBSD Jails
-
-    """
-    Jails improve on the concept of the traditional chroot environment in
-    several ways. In a traditional chroot environment, processes are only
-    limited in the part of the file system they can access. The rest of the
-    system resources, system users, running processes, and the networking
-    subsystem are shared by the chrooted processes and the processes of the
-    host system. Jails expand this model by virtualizing access to the file
-    system, the set of users, and the networking subsystem. More fine-grained
-    controls are available for tuning the access of a jailed environment. Jails
-    can be considered as a type of operating system-level virtualization.
-    """
-    https://www.freebsd.org/doc/handbook/jails.html
-
-  * Systemd-nspawn
-    """
-    However, to make things easy we'll focus on systemd-nspawn, the
-    mini-container manager that is shipped with systemd itself. systemd-nspawn
-    uses the same kernel interfaces as the other container managers, however is
-    less flexible as it is designed to be a container manager that is as simple
-    to use as possible and "just works", rather than trying to be a generic
-    tool you can configure in every low-level detail. We use systemd-nspawn
-    extensively when developing systemd.
-    """
-    http://0pointer.net/blog/systemd-for-administrators-part-xxi.html
 
 * Docker Components
   * Docker daemon
