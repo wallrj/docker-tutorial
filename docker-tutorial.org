@@ -26,6 +26,7 @@
   * VirtualBox / VMWare
   * System Virtual Machines (Hardware virtualisation)
     * Emulate foreign hardware environments
+    * Have their own kernels
   * Server provisioning
     * https://en.wikipedia.org/wiki/Provisioning#Server_provisioning
     * OS installation
@@ -71,6 +72,29 @@
   * Vagrant Cloud
 
 
+* Preparations
+  * Identify experts (standup)
+  * Install Git
+  * INstall Virtualbox
+  * Install vagrant
+  * Download repo
+  * Git clone
+
+```
+git clone https://github.com/wallrj/docker-tutorial.git
+```
+
+  * Change to docker-tutorial directory
+
+```
+cd docker-tutorial
+```
+
+  * Start the virtual machine
+
+```
+vagrant up
+```
 
 * What is Docker?
 
@@ -84,6 +108,7 @@
 
 
 * Operating-system-level virtualization
+  * Share the same kernel as the host.
   * usually imposes little to no overhead, because
   * programs in virtual partitions use the operating system's normal system call interface and
   * do not need to be subjected to emulation or
@@ -152,26 +177,39 @@
   * Images
   * Layers
   * Pull
-  * Link
+  * Links
+  * Copy-on-write
+  * Volumes
+
+
 
 * Docker Tutorial
   * https://www.docker.com/tryit/
+
     * Demonstrates contrived examples
     * Who ever uses `docker commit`?
-    *
+
   * `docker version`
+
   * `docker search`
+
   * `docker pull`
+
   * `docker run`
     * interactive / tty mode not supported (it seems)
     * Not well explained that you supply a command to run inside.
     * Not well explained how / where the changes are stored.
+
   * `docker ps`
     * Doesn't show cute container names...we'll see that later when we install Docker properly.
+
   * `docker commit`
+
   * `docker run learn/ping`
     * Doesn't support ctrl-c
+
   * `docker inspect`
+
   * `docker push`
 
 * Install Docker
