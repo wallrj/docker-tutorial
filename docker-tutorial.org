@@ -205,7 +205,7 @@
 
   #+BEGIN_SRC sh
 
-  docker run --detach --publish 80 tutum/apache-php
+  docker run --rm --detach --publish 80 tutum/apache-php
   docker ps
 
   #+END_SRC
@@ -227,7 +227,7 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 
   #+BEGIN_SRC sh
 
-  docker run --detach --publish 8080:80 tutum/apache-php
+  docker run --rm --detach --publish 8080:80 tutum/apache-php
   docker ps
 
   #+END_SRC
@@ -238,7 +238,7 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 
   #+BEGIN_SRC sh
 
-  docker run --detach --publish 8081:80  --volume /vagrant/sample1:/app tutum/apache-php
+  docker run --rm --detach --publish 8081:80  --volume /vagrant/sample1:/app tutum/apache-php
   docker ps
 
   #+END_SRC
