@@ -178,6 +178,10 @@
 
 * The tutorial virtual machine
 
+  Fixed private IP address:
+
+  172.16.255.250
+
 * Bare bones system
 
   Neither Apache or PHP present on tutorial VM!
