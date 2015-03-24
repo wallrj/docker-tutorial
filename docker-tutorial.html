@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>(Docker)</title>
+<meta name="author" content="((an introduction))"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.min.css"/>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/night.css" id="theme"/>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.5.0/css/print/pdf.css" type="text/css" media="print"/>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section>
+<h1>Docker</h1>
+<h2>(an introduction)</h2>
+<h2><a href="mailto:Richard Wall (@wallrj) <richard@the-moon.net>">Richard Wall (@wallrj) <richard@the-moon.net></a></h2>
+<h2>24 March 2015</h2></section>
+
+<section>
+<section id="sec-1" >
+
+<h2>Introduction and recap (5m)</h2>
+<ul class="org-ul">
+<li>Introduction and recap (5m)
+</li>
+<li>Preparations (30m)
+</li>
+<li>What is Docker? (5m)
+</li>
+<li>Summary of Docker commands so far&#x2026; (5m)
+</li>
+<li>Tutorial Environment (5m)
+</li>
+<li>Exercises (30m)
+</li>
+<li>The `tutum/apache-php` Dockerfile (5m)
+</li>
+<li>Next Steps (30m)
+</li>
+<li>Questions? (5m)
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-2" >
+
+<h2>Virtual Machines</h2>
+<ul class="org-ul">
+<li>VirtualBox
+</li>
+<li>VMWare
+</li>
+<li>etc
+</li>
+</ul>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Virtual_machine">https://en.wikipedia.org/wiki/Virtual_machine</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-3" >
+
+<h2>System Virtual Machines</h2>
+<ul class="org-ul">
+<li>AKA Hardware virtualisation,
+</li>
+<li>emulates foreign hardware environments and
+</li>
+<li>machines have their own kernels
+</li>
+</ul>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Hardware_virtualization">http://en.wikipedia.org/wiki/Hardware_virtualization</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-4" >
+
+<h2>Vagrant</h2>
+<ul class="org-ul">
+<li>"Create and configure lightweight, reproducible, and portable development environments."
+</li>
+<li>"Provisioners in Vagrant allow you to automatically install software, alter configurations, and more on the machine as part of the vagrant up process."
+</li>
+<li>`vagrant up`
+</li>
+</ul>
+
+<p>
+<a href="https://www.vagrantup.com/">https://www.vagrantup.com/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-5" >
+
+<h2>Vagrant for server provisioning</h2>
+<ul class="org-ul">
+<li>OS installation
+</li>
+<li>Storage set up
+</li>
+<li>Network set up
+</li>
+<li>Install packages
+</li>
+<li>Upgrade packages
+</li>
+</ul>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Provisioning#Server_provisioning">https://en.wikipedia.org/wiki/Provisioning#Server_provisioning</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-6" >
+
+<h2>Vagrant for configuration management</h2>
+<ul class="org-ul">
+<li>Puppet
+</li>
+<li>Chef
+</li>
+</ul>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management">https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-7" >
+
+<h2>Preparations (30m)</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-8" >
+
+<h2>Identify experts</h2>
+<ul class="org-ul">
+<li>Vagrant / Docker experts please stand up
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-9" >
+
+<h2>Software</h2>
+<p>
+Install the following software on your laptop:
+</p>
+
+<ul class="org-ul">
+<li>Git: <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>
+</li>
+<li>VirtualBox: <a href="https://www.virtualbox.org">https://www.virtualbox.org</a>
+</li>
+<li>Vagrant: <a href="https://docs.vagrantup.com/v2/installation">https://docs.vagrantup.com/v2/installation</a>
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-10" >
+
+<h2>Start the tutorial environment</h2>
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>git clone https://github.com/wallrj/docker-tutorial.git
+cd docker-tutorial
+vagrant up
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="sec-11" >
+
+<h2>What is Docker? (5m)</h2>
+<blockquote>
+
+
+<p>
+Docker is an open platform for developers and sysadmins to build, ship, and
+run distributed applications.
+</p>
+
+<p>
+Consisting of Docker Engine, a portable,
+lightweight runtime and packaging tool, and Docker Hub, a cloud service for
+sharing applications and automating workflows, Docker enables apps to be
+quickly assembled from components and eliminates the friction between
+development, QA, and production environments.
+</p>
+
+<p>
+As a result, IT can ship faster
+and run the same app, unchanged, on laptops, data center VMs, and any cloud.
+</p>
+</blockquote>
+
+<p>
+<a href="https://www.docker.com/whatisdocker/">https://www.docker.com/whatisdocker/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-12" >
+
+<h2>Operating system level virtualisation</h2>
+<ul class="org-ul">
+<li>Containers share the same kernel as the host.
+</li>
+<li>Low overhead, because
+</li>
+<li>programs in virtual partitions use the operating system's normal system call interface and
+</li>
+<li>do not need to be subjected to emulation or
+</li>
+<li>be run in an intermediate virtual machine,
+</li>
+<li>as is the case with whole-system virtualizers (such as VMware ESXi, QEMU or Hyper-V) and paravirtualizers (such as Xen or UML).
+</li>
+<li>This form of virtualization also does not require support in hardware to perform efficiently.
+</li>
+</ul>
+
+<p>
+<a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">https://en.wikipedia.org/wiki/Operating-system-level_virtualization</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-13" >
+
+<h2>Docker Terminology</h2>
+<ul class="org-ul">
+<li>Container
+</li>
+<li>Dockerfile
+</li>
+<li>Entrypoint
+</li>
+<li>Images
+</li>
+<li>Layers
+</li>
+<li>Copy-on-write
+</li>
+<li>Pull
+</li>
+<li>Expose ports
+</li>
+<li>Volumes
+</li>
+<li>Links
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-14" >
+
+<h2>Docker Components</h2>
+<ul class="org-ul">
+<li>Docker daemon
+</li>
+<li>Docker client
+</li>
+<li>Docker hub
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-15" >
+
+<h2>Docker Tutorial (30 minutes)</h2>
+<p>
+<a href="https://www.docker.com/tryit/">https://www.docker.com/tryit/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-16" >
+
+<h2>Summary of Docker commands so far&#x2026; (5m)</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-17" >
+
+<h2>`docker version`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-18" >
+
+<h2>`docker search`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-19" >
+
+<h2>`docker pull`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-20" >
+
+<h2>`docker run`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-21" >
+
+<h2>`docker ps`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-22" >
+
+<h2>`docker commit`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-23" >
+
+<h2>`docker inspect`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-24" >
+
+<h2>`docker push`</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-25" >
+
+<h2>Tutorial Environment (5m)</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-26" >
+
+<h2>Log in</h2>
+<div class="org-src-container">
+
+<pre class="src src-sh"><code># Change to the tutorial directory
+cd docker-tutorial
+
+# You may already have completed this step
+vagrant up
+
+# Log into the virtual machine
+vagrant ssh
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="sec-27" >
+
+<h2>The tutorial virtual machine</h2>
+<p>
+Fixed private IP address:
+</p>
+
+<p>
+172.16.255.250
+</p>
+</section>
+</section>
+<section>
+<section id="sec-28" >
+
+<h2>Bare bones system</h2>
+<p>
+Neither Apache or PHP present on tutorial VM!
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>vagrant@docker-tutorial:~$ php
+The program 'php' is currently not installed. You can install it by typing:
+sudo apt-get install php5-cli
+</code></pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>vagrant@docker-tutorial:~$ apache
+No command 'apache' found, did you mean:
+ Command 'apache2' from package 'apache2-bin' (main)
+apache: command not found
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="sec-29" >
+
+<h2>Exercises (30m)</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-30" >
+
+<h2>Start a webserver</h2>
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>docker run --rm --detach --publish 80 tutum/apache-php
+docker ps
+</code></pre>
+</div>
+
+<p>
+(note the port)
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>vagrant@docker-tutorial:~$ docker ps
+CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS              PORTS                   NAMES
+d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago      Up 13 seconds       0.0.0.0:49154-&gt;80/tcp   compassionate_mcclintock
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="sec-31" >
+
+<h2>Access webserver from laptop</h2>
+<ul class="org-ul">
+<li><a href="http://172.16.255.250">http://172.16.255.250</a>:&lt;PORT&gt;
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-32" >
+
+<h2>Choose the webserver port</h2>
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>docker run --rm --detach --publish 8080:80 tutum/apache-php
+docker ps
+</code></pre>
+</div>
+
+<p>
+<a href="http://172.16.255.250:8080">http://172.16.255.250:8080</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-33" >
+
+<h2>Serve a custom page</h2>
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>docker run --rm --detach --publish 8081:80  --volume /vagrant/sample1:/app tutum/apache-php
+docker ps
+</code></pre>
+</div>
+
+<p>
+<a href="http://172.16.255.250:8081">http://172.16.255.250:8081</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-34" >
+
+<h2>The `tutum/apache-php` Dockerfile (5m)</h2>
+<ul class="org-ul">
+<li>Uploaded to Docker Hub
+</li>
+<li>Built upon official Ubuntu base image
+</li>
+<li>Apache and PHP packages installed
+</li>
+<li>Composer installed
+</li>
+<li>Apache and PHP configured
+</li>
+<li>Container configured to serve files in /app
+</li>
+<li>Entry point script added
+</li>
+<li>Port exposed
+</li>
+</ul>
+
+<p>
+<a href="https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/">https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-35" >
+
+<h2>Next Steps (30m)</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-36" >
+
+<h2>Build an image</h2>
+<ul class="org-ul">
+<li>On your laptop:
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>cd docker-tutorial
+cd sample2
+edit Dockerfile
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li>And in the virtual machine:
+</li>
+</ul>
+
+<div class="org-src-container">
+
+<pre class="src src-sh"><code>cd /vagrant
+cd sample2
+docker build --tag=docker-tutorial/sample2 .
+docker run --rm --interactive --tty docker-tutorial/sample2 /bin/bash
+</code></pre>
+</div>
+
+<ul class="org-ul">
+<li>Edit Dockerfile and repeat
+</li>
+</ul>
+</section>
+</section>
+<section>
+<section id="sec-37" >
+
+<h2>Install Docker on your laptop</h2>
+<p>
+<a href="https://docs.docker.com/installation/#installation">https://docs.docker.com/installation/#installation</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-38" >
+
+<h2>Register at Docker Hub and push an image</h2>
+<ul class="org-ul">
+<li>Sign up with GitHub
+</li>
+</ul>
+
+<p>
+<a href="https://hub.docker.com/">https://hub.docker.com/</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-39" >
+
+<h2>Use `compose` (fig) to bring up a micro-service application.</h2>
+<p>
+eg Elastic Search, Logstash, Kibana
+</p>
+
+<p>
+<a href="https://github.com/ClusterHQ/docker-images">https://github.com/ClusterHQ/docker-images</a>
+</p>
+</section>
+</section>
+<section>
+<section id="sec-40" >
+
+<h2>Summary</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-41" >
+
+<h2>Questions? (5m)</h2>
+</section>
+
+</section>
+<section>
+<section id="sec-42" >
+
+<h2>Thanks and links</h2>
+<ul class="org-ul">
+<li>Mix Radio: <a href="https://github.com/mixradio">https://github.com/mixradio</a>
+</li>
+<li>Katja Durrani: <a href="https://github.com/katjad">https://github.com/katjad</a>
+</li>
+<li>Carl Hughes: <a href="https://github.com/codekipple">https://github.com/codekipple</a>
+</li>
+<li>Kai Davenport: <a href="https://github.com/binocarlos">https://github.com/binocarlos</a>
+</li>
+<li>Richard Wall: <a href="https://github.com/wallrj">https://github.com/wallrj</a>
+</li>
+<li>ClusterHQ: <a href="https://github.com/ClusterHQ">https://github.com/ClusterHQ</a>
+</li>
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="//cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/head.min.js"></script>
+<script src="//cdn.jsdelivr.net/reveal.js/2.5.0/js/reveal.min.js"></script>
+<script>
+
+                        // Full list of configuration options available here:
+                        // https://github.com/hakimel/reveal.js#configuration
+                        Reveal.initialize({
+                                controls: true,
+                                progress: true,
+                                history: true,
+                                center: true,
+                                rollingLinks: false,
+                                keyboard: true,
+                                overview: true,
+                                 // slide width
+                                 // slide height
+                                 // slide margin
+                                 // slide minimum scaling factor
+                                 // slide maximum scaling factor
+
+
+                                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                                transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+                                transitionSpeed: 'default',
+
+                                // Optional libraries used to extend on reveal.js
+                                dependencies: [
+                                        { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                                        { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                                        { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                                        { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                                        { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                                        // { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+                                        // { src: '//cdn.jsdelivr.net/reveal.js/2.5.0/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+                                ]
+                        });
+</script>
+</body>
+</html>
