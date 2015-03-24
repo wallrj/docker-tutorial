@@ -1,6 +1,6 @@
-#+TITLE: Docker...
+#+TITLE: Docker
 #+DATE: 24 March 2015
-#+AUTHOR: ...an introduction to.
+#+AUTHOR: (an introduction)
 #+EMAIL: Richard Wall (@wallrj) <richard@the-moon.net>
 #+REVEAL_THEME: night
 #+REVEAL_TRANS: linear
@@ -16,8 +16,8 @@
   * Install tutorial environment
   * What is Docker?
   * Try it
-  * Challenge
-  * Demo
+  * A simple web server
+  * Next steps
   * Questions?
 
 * Recap
