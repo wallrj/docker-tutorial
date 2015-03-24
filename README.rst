@@ -48,7 +48,7 @@ So if you want to be super prepared and if you've managed to install Git and Vag
 please clone this repository:
 
 ```
-git clone git@github.com:wallrj/docker-tutorial.git
+git clone https://github.com/wallrj/docker-tutorial.git
 ```
 
 Then change to the `docker-tutorial` directory
