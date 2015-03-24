@@ -27,66 +27,84 @@
 
 * VirtualBox / VMWare
 
-* System Virtual Machines (Hardware virtualisation)
-  * Emulate foreign hardware environments
-  * Have their own kernels
+* System Virtual Machines
+  * AKA Hardware virtualisation,
+  * emulates foreign hardware environments and
+  * machines have their own kernels
+
+  http://en.wikipedia.org/wiki/Hardware_virtualization
 
 * Vagrant
 
-  Vagrant allows you to "Create and configure lightweight, reproducible, and portable development environments."
-
-  * https://www.vagrantup.com/
+  * "Create and configure lightweight, reproducible, and portable development environments."
+  * "Provisioners in Vagrant allow you to automatically install software, alter configurations, and more on the machine as part of the vagrant up process."
   * `vagrant up`
 
-  "Provisioners in Vagrant allow you to automatically install software, alter configurations, and more on the machine as part of the vagrant up process."
+  https://www.vagrantup.com/
 
-  *  http://docs.vagrantup.com/v2/provisioning/
+* Vagrant for server provisioning
 
-* Server provisioning
   * OS installation
   * Storage set up
   * Network set up
   * Install packages
   * Upgrade packages
-  * https://en.wikipedia.org/wiki/Provisioning#Server_provisioning
 
-* Configuration management
+  https://en.wikipedia.org/wiki/Provisioning#Server_provisioning
+
+* Vagrant for configuration management
+
   * Puppet
   * Chef
-  * https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management
+
+  https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management
 
 * Preparations
 
 * Identify experts
-  * Vagrant / Docker experts please standup
+
+  * Vagrant / Docker experts please stand up
 
 * Software
 
-  * **Git**: http://git-scm.com/downloads
-  * **VirtualBox**: https://www.virtualbox.org
-  * **Vagrant**: https://docs.vagrantup.com/v2/installation
+  Install the following software on your laptop:
+
+  * Git: http://git-scm.com/downloads
+  * VirtualBox: https://www.virtualbox.org
+  * Vagrant: https://docs.vagrantup.com/v2/installation
 
 * Start the tutorial environment
 
-  ```
+  #+BEGIN_SRC sh
+
   git clone https://github.com/wallrj/docker-tutorial.git
   cd docker-tutorial
   vagrant up
-  ```
+
+  #+END_SRC
 
 * What is Docker?
 
+  #+BEGIN_QUOTE
+
   Docker is an open platform for developers and sysadmins to build, ship, and
-  run distributed applications. Consisting of Docker Engine, a portable,
+  run distributed applications.
+
+  Consisting of Docker Engine, a portable,
   lightweight runtime and packaging tool, and Docker Hub, a cloud service for
   sharing applications and automating workflows, Docker enables apps to be
   quickly assembled from components and eliminates the friction between
-  development, QA, and production environments. As a result, IT can ship faster
+  development, QA, and production environments.
+
+  As a result, IT can ship faster
   and run the same app, unchanged, on laptops, data center VMs, and any cloud.
 
-  * https://www.docker.com/whatisdocker/
+  #+END_QUOTE
 
-* Operating-system-level virtualization
+  https://www.docker.com/whatisdocker/
+
+* Operating system level virtualisation
+
   * Containers share the same kernel as the host.
   * Low overhead, because
   * programs in virtual partitions use the operating system's normal system call interface and
@@ -115,9 +133,10 @@
   * Docker hub
 
 * Docker Tutorial (30 minutes)
-  * https://www.docker.com/tryit/
 
-* Summary of commands so far
+  https://www.docker.com/tryit/
+
+* Summary of Docker commands so far...
 
 * `docker version`
 
@@ -131,61 +150,98 @@
 
 * `docker commit`
 
-* `docker run learn/ping`
-
 * `docker inspect`
 
 * `docker push`
 
-* Docker Development Environment
+* Tutorial Environment
 
 * Log in
 
-  * vagrant up (may already be complete)
-  * vagrant ssh (does this work on windows?)
+  #+BEGIN_SRC sh
 
-* Demonstrate barebones system
+  # Change to the tutorial directory
+  cd docker-tutorial
+
+  # (may already be complete)
+  vagrant up
+
+  # (does this work on windows?)
+  vagrant ssh
+
+  #+END_SRC
+
+* The tutorial virtual machine
+
+* Bare bones system
 
   Neither Apache or PHP present on tutorial VM!
 
-  ```
+  #+BEGIN_SRC sh
+
   vagrant@docker-tutorial:~$ php
   The program 'php' is currently not installed. You can install it by typing:
   sudo apt-get install php5-cli
-  ```
 
-  ```
+  #+END_SRC
+
+  #+BEGIN_SRC sh
+
   vagrant@docker-tutorial:~$ apache
   No command 'apache' found, did you mean:
    Command 'apache2' from package 'apache2-bin' (main)
   apache: command not found
-  ```
 
-* Start a webserver in a Docker container
-  * docker run -d -p 80 tutum/apache-php
-  * docker ps
+  #+END_SRC
 
-    (note the port)
+* Start a webserver
+
+  #+BEGIN_SRC sh
+
+  docker run --detach --publish 80 tutum/apache-php
+  docker ps
+
+  #+END_SRC
+
+  (note the port)
+
+  #+BEGIN_SRC sh
+vagrant@docker-tutorial:~$ docker ps
+CONTAINER ID        IMAGE                     COMMAND             CREATED             STATUS              PORTS                   NAMES
+d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago      Up 13 seconds       0.0.0.0:49154->80/tcp   compassionate_mcclintock
+
+  #+END_SRC
 
 * Access webserver from laptop
 
   * http://172.16.255.250:<PORT>
 
-* Start a container with a fixed port
+* Choose the webserver port
 
-  * docker run -d -p 8080:80 tutum/apache-php
-  * docker ps
+  #+BEGIN_SRC sh
 
-* Access webserver from laptop
+  docker run --detach --publish 8080:80 tutum/apache-php
+  docker ps
 
-  * http://172.16.255.250:8080
+  #+END_SRC
+
+  http://172.16.255.250:8080
 
 * Serve a custom page
-  * docker run -d -p 8082:80 -v /vagrant/sample1:/app  tutum/apache-php
+
+  #+BEGIN_SRC sh
+
+  docker run --detach --publish 8081:80  --volume /vagrant/sample1:/app tutum/apache-php
+  docker ps
+
+  #+END_SRC
+
+  http://172.16.255.250:8081
 
 * Explanation
-  * Container configured to serve files in /app
+
   * https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/
+  * Container configured to serve files in /app
 
   # Explain /vagrant shared directory between laptop and virtual machine
   # Explain Dockerfile
