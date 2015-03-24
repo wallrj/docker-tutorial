@@ -11,7 +11,7 @@
 # Remove speaker notes
 # awk 'BEGIN {skip=0} /^#\+BEGIN_NOTES/ { skip=1 } /^#\+END_NOTES/ {skip=0; next;} {if(skip==0) print $0}'
 
-* Preview
+* Preview (1m)
 
   * Recap
   * Install tutorial environment
@@ -21,7 +21,7 @@
   * Next steps
   * Questions?
 
-* Recap
+* Recap (5m)
 
 * Virtual Machines
 
@@ -64,7 +64,7 @@
 
   https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management
 
-* Preparations
+* Preparations (30m)
 
 * Identify experts
 
@@ -88,7 +88,7 @@
 
   #+END_SRC
 
-* What is Docker?
+* What is Docker? (5m)
 
   #+BEGIN_QUOTE
 
@@ -141,7 +141,7 @@
 
   https://www.docker.com/tryit/
 
-* Summary of Docker commands so far...
+* Summary of Docker commands so far... (5m)
 
 * `docker version`
 
@@ -159,7 +159,7 @@
 
 * `docker push`
 
-* Tutorial Environment
+* Tutorial Environment (5m)
 
 * Log in
 
@@ -198,6 +198,8 @@
   apache: command not found
 
   #+END_SRC
+
+* Exercises (30m)
 
 * Start a webserver
 
@@ -243,13 +245,18 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 
   http://172.16.255.250:8081
 
-* Explanation
+* The `tutum/apache-php` Dockerfile (5m)
 
-  * https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/
+  * Uploaded to Docker Hub
+  * Built upon official Ubuntu base image
+  * Apache and PHP packages installed
+  * Composer installed
+  * Apache and PHP configured
   * Container configured to serve files in /app
+  * Entry point script added
+  * Port exposed
 
-  # Explain /vagrant shared directory between laptop and virtual machine
-  # Explain Dockerfile
+  https://registry.hub.docker.com/u/tutum/apache-php/dockerfile/
 
 * Next Steps
 
@@ -265,7 +272,7 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 
 * Challenges
 
-  * Use `compose` to bring up a microservice application.
+  * Use `compose` (fig) to bring up a microservice application.
   * Dockerize a clojure application.
 
 * Summary
