@@ -14,9 +14,8 @@ Meetup:
 
 (There are a limited number of places at the venue, so if any of you have RSVPd to the Meetup but are not able to attend, please go to the Meetup page and change your status so that others can take your place and so that we can estimate how much food and drink to order.)
 
-
 Slides:
- * https://github.com/wallrj/docker-tutorial/blob/master/docker-tutorial.org
+ * http://htmlpreview.github.io/?https://github.com/wallrj/docker-tutorial/blob/master/docker-tutorial.html#/
 
 Presenter:
  * Richard Wall
