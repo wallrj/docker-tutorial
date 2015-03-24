@@ -97,20 +97,22 @@
 
   https://en.wikipedia.org/wiki/Operating-system-level_virtualization
 
+* Docker Terminology
+  * Container
+  * Dockerfile
+  * Entrypoint
+  * Images
+  * Layers
+  * Copy-on-write
+  * Pull
+  * Expose ports
+  * Volumes
+  * Links
+
 * Docker Components
   * Docker daemon
   * Docker client
   * Docker hub
-
-* Docker Terminology
-  * Images
-  * Layers
-  * Pull
-  * Links
-  * Copy-on-write
-  * Volumes
-
-
 
 * Docker Tutorial
   * https://www.docker.com/tryit/
