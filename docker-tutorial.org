@@ -12,6 +12,7 @@
 # awk 'BEGIN {skip=0} /^#\+BEGIN_NOTES/ { skip=1 } /^#\+END_NOTES/ {skip=0; next;} {if(skip==0) print $0}'
 
 * Preview
+
   * Recap
   * Install tutorial environment
   * What is Docker?
@@ -23,11 +24,15 @@
 * Recap
 
 * Virtual Machines
-  * https://en.wikipedia.org/wiki/Virtual_machine
 
-* VirtualBox / VMWare
+  * VirtualBox
+  * VMWare
+  * etc
+
+  https://en.wikipedia.org/wiki/Virtual_machine
 
 * System Virtual Machines
+
   * AKA Hardware virtualisation,
   * emulates foreign hardware environments and
   * machines have their own kernels
@@ -163,10 +168,10 @@
   # Change to the tutorial directory
   cd docker-tutorial
 
-  # (may already be complete)
+  # You may already have completed this step
   vagrant up
 
-  # (does this work on windows?)
+  # Log into the virtual machine
   vagrant ssh
 
   #+END_SRC
@@ -249,14 +254,17 @@ d10d4eec5ba1        tutum/apache-php:latest   "/run.sh"           14 seconds ago
 * Next Steps
 
 * Install Docker on your laptop
+
   https://docs.docker.com/installation/#installation
 
 * Register at Docker Hub
-  https://hub.docker.com/
 
   * Sign up with GitHub
 
+  https://hub.docker.com/
+
 * Challenges
+
   * Use `compose` to bring up a microservice application.
   * Dockerize a clojure application.
 
