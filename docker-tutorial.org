@@ -13,88 +13,66 @@
 
 * Preview
   * Recap
+  * Install tutorial environment
   * What is Docker?
   * Try it
-  * Install it
   * Challenge
   * Demo
   * Questions?
 
 * Recap
-  * Virtual Machines
-    * https://en.wikipedia.org/wiki/Virtual_machine
-  * VirtualBox / VMWare
-  * System Virtual Machines (Hardware virtualisation)
-    * Emulate foreign hardware environments
-    * Have their own kernels
-  * Server provisioning
-    * https://en.wikipedia.org/wiki/Provisioning#Server_provisioning
-    * OS installation
-    * Storage set up
-    * Network set up
-    * Install packages
-    * Upgrade packages
 
-  * Configuration management
-    * Configuration management can be used to maintain OS configuration files.[11] Example systems include Quattor, CFEngine, Bcfg2, Puppet, and Chef.
-    * https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management
+* Virtual Machines
+  * https://en.wikipedia.org/wiki/Virtual_machine
 
-  * Puppet
-    * Puppet is a tool designed to manage the configuration of Unix-like and Microsoft Windows systems declaratively. The user describes system resources and their state, either using Puppet's declarative language or a Ruby DSL (domain-specific language). This information is stored in files called "Puppet manifests". Puppet discovers the system information via a utility called Facter, and compiles the Puppet manifests into a system-specific catalog containing resources and resource dependency, which are applied against the target systems. Any actions taken by Puppet are then reported.
-    * https://en.wikipedia.org/wiki/Puppet_%28software%29
+* VirtualBox / VMWare
 
-  * Chef / Ansible / Salt / Fabric etc
+* System Virtual Machines (Hardware virtualisation)
+  * Emulate foreign hardware environments
+  * Have their own kernels
 
-  * Vagrant
+* Vagrant
 
-    Vagrant allows you to "Create and configure lightweight, reproducible, and portable development environments."
+  Vagrant allows you to "Create and configure lightweight, reproducible, and portable development environments."
 
-    https://www.vagrantup.com/
-
-  * `vagrant init`
-
+  * https://www.vagrantup.com/
   * `vagrant up`
 
-  * `vagrant provision`
+  "Provisioners in Vagrant allow you to automatically install software, alter configurations, and more on the machine as part of the vagrant up process."
 
-    "Provisioners in Vagrant allow you to automatically install software, alter configurations, and more on the machine as part of the vagrant up process."
+  *  http://docs.vagrantup.com/v2/provisioning/
 
-    http://docs.vagrantup.com/v2/provisioning/
+* Server provisioning
+  * OS installation
+  * Storage set up
+  * Network set up
+  * Install packages
+  * Upgrade packages
+  * https://en.wikipedia.org/wiki/Provisioning#Server_provisioning
 
-  * `vagrant status`
-
-  * `vagant ssh`
-
-  * `vagrant halt`
-
-  * `vagrant package`
-
-  * Vagrant Cloud
-
+* Configuration management
+  * Puppet
+  * Chef
+  * https://en.wikipedia.org/wiki/Configuration_management#Operating_System_configuration_management
 
 * Preparations
-  * Identify experts (standup)
-  * Install Git
-  * INstall Virtualbox
-  * Install vagrant
-  * Download repo
-  * Git clone
 
-```
-git clone https://github.com/wallrj/docker-tutorial.git
-```
+* Identify experts
+  * Vagrant / Docker experts please standup
 
-  * Change to docker-tutorial directory
+* Software
 
-```
-cd docker-tutorial
-```
+  * **Git**: http://git-scm.com/downloads
+  * **VirtualBox**: https://www.virtualbox.org
+  * **Vagrant**: https://docs.vagrantup.com/v2/installation
 
-  * Start the virtual machine
+* Start the tutorial environment
 
-```
-vagrant up
-```
+  ```
+  git clone https://github.com/wallrj/docker-tutorial.git
+  cd docker-tutorial
+  vagrant up
+  ```
 
 * What is Docker?
 
@@ -293,6 +271,10 @@ apache: command not found
   * Sign up with GitHub
 
 * Challenge
+
+  * Use `compose` to bring up a microservice application.
+  * Dockerize a clojure application (Tom Coupland)
+  *
 
 * Summary
 
